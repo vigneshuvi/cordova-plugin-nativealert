@@ -24,7 +24,7 @@
     </config-file>
 
     <header-file src="src/ios/Alert.h" target-dir="Alert"/>
-    <source-file src="src/Alert.m" target-dir="Alert"/>
+    <source-file src="src/ios/Alert.m" target-dir="Alert"/>
   </platform>
 
 
