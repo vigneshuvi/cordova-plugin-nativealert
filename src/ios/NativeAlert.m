@@ -61,9 +61,9 @@
                 }
                 if (IS_IPAD) {
                     CGRect rect = CGRectMake( (kWindowWidth - 300) / 2,  100, 300, 400);
-                    alertController.popoverPresentationController.sourceView = alertController.view;
-                    alertController.popoverPresentationController.sourceRect = rect;
-                    alertController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
+                    alert.popoverPresentationController.sourceView = alert.view;
+                    alert.popoverPresentationController.sourceRect = rect;
+                    alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
                 }
                 [[self currentApplicationViewController] presentViewController:alert animated:YES completion:nil];
             } else {
