@@ -1,14 +1,14 @@
 //
-//  Alert.m
-//  Alert
+//  NativeAlert.m
+//  NativeAlert
 //
 //  Created by Vignesh on 1/2/18.
 //  Copyright © 2018 Vignesh Uvi. All rights reserved.
 //
 
-#import "Alert.h"
+#import "NativeAlert.h"
 
-@implementation Alert
+@implementation NativeAlert
 
 /**
  * Plugin methods are executed on the UI thread.

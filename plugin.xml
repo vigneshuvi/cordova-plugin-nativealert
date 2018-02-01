@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="com.plugin.alert"
+        id="com.plugin.nativealert"
         version="0.5.2">
 
   <name>Echo</name>
@@ -9,22 +9,22 @@
     <engine name="cordova" version=">=3.4.0"/>
   </engines>
 
-  <asset src="www/alert.js" target="js/alert.js"/>
+  <asset src="www/nativealert.js" target="js/nativealert.js"/>
 
-  <js-module src="www/alert.js" name="alert">
-    <clobbers target="alert" />
+  <js-module src="www/nativealert.js" name="nativealert">
+    <clobbers target="nativealert" />
   </js-module>
 
   <platform name="ios">
     
     <config-file target="config.xml" parent="/widget">
-      <feature name="alert">
-        <param name="ios-package" value="Alert" />
+      <feature name="nativealert">
+        <param name="ios-package" value="NativeAlert" />
       </feature>
     </config-file>
 
-    <header-file src="src/ios/Alert.h" target-dir="Alert"/>
-    <source-file src="src/ios/Alert.m" target-dir="Alert"/>
+    <header-file src="src/ios/NativeAlert.h" target-dir="NativeAlert"/>
+    <source-file src="src/ios/NativeAlert.m" target-dir="NativeAlert"/>
   </platform>
 
 
