@@ -16,45 +16,44 @@
  * you should make use of a background thread.
  */
 - (void) showAlert:(CDVInvokedUrlCommand*)command {
-
+    
     [self.commandDelegate runInBackground:^{
-
+        
         // Get the call back ID and echo argument
         NSString *callbackId = [command callbackId];
-        CDVPluginResult* result = nil;
-        int count = [[command arguments] count];
+        __block CDVPluginResult* result = nil;
+        NSUInteger count = [[command arguments] count];
         if ( count > 0) {
             NSString* jsonString = [command.arguments objectAtIndex:0];
+            NSError *err = nil;
             NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-            id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            if ([[json allKeys] count] > 0) {
+            id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
+            if (err == nil && json != nil) {
                 NSString *title = [json objectForKey:@"title"];
                 NSString *message = [json objectForKey:@"message"];
                 NSString *ok = [json objectForKey:@"success"];
-                UIAlertController * alert=[UIAlertController alertControllerWithTitle:(title != nil ? title : "Alert") 
-                                                                  message:(message != nil ? message : "")
-                                                           preferredStyle:UIAlertControllerStyleAlert];
-
-                UIAlertAction* yesButton = [UIAlertAction actionWithTitle: (ok != nil ? ok : "Ok")
+                UIAlertController * alert=[UIAlertController alertControllerWithTitle:(title != nil ? title : @"Alert")
+                                                                              message:(message != nil ? message : @"")
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* yesButton = [UIAlertAction actionWithTitle: (ok != nil ? ok : @"Ok")
                                                                     style:UIAlertActionStyleDefault
                                                                   handler:^(UIAlertAction * action)
-                {
-                       result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:scheduleCallback];
-                       [self.commandDelegate sendPluginResult:result callbackId:callbackId];
-
-                }];
+                                            {
+                                                result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Alert was displayed successfully"];
+                                                [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+                                                
+                                            }];
                 [alert addAction:yesButton];
                 [[self currentApplicationViewController] presentViewController:alert animated:YES completion:nil];
-            } else { 
+            } else {
                 result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Alert Argument was null"];
                 [self.commandDelegate sendPluginResult:result callbackId:callbackId];
             }
-        } else { 
+        } else {
             result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Alert Argument was null"];
             [self.commandDelegate sendPluginResult:result callbackId:callbackId];
         }
-        
-        
     }];
 }
 
@@ -75,7 +74,5 @@
     }
     return nil;
 }
-
-
 
 @end
