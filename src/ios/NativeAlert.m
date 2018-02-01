@@ -20,7 +20,7 @@
     [self.commandDelegate runInBackground:^{
         
         // Get the call back ID and echo argument
-        NSString *callbackId = [command callbackId];
+        __block NSString *callbackId = [command callbackId];
         __block CDVPluginResult* result = nil;
         NSUInteger count = [[command arguments] count];
         if ( count > 0) {
@@ -31,20 +31,29 @@
             if (err == nil && json != nil) {
                 NSString *title = [json objectForKey:@"title"];
                 NSString *message = [json objectForKey:@"message"];
-                NSString *ok = [json objectForKey:@"success"];
+                NSString *ok = [json objectForKey:@"okButton"];
                 UIAlertController * alert=[UIAlertController alertControllerWithTitle:(title != nil ? title : @"Alert")
                                                                               message:(message != nil ? message : @"")
                                                                        preferredStyle:UIAlertControllerStyleAlert];
                 
                 UIAlertAction* yesButton = [UIAlertAction actionWithTitle: (ok != nil ? ok : @"Ok")
                                                                     style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action)
-                                            {
-                                                result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Alert was displayed successfully"];
+                                                                  handler:^(UIAlertAction * action) {
+                                                result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:(ok != nil ? ok : @"Ok")];
+                                                [self.commandDelegate sendPluginResult:result callbackId:callbackId];
+                                            }];
+                [alert addAction:yesButton];
+                NSString *cancel = [json objectForKey:@"cancelButton"];
+                if (cancel != nil) {
+                    UIAlertAction* yesButton = [UIAlertAction actionWithTitle: (cancel != nil ? cancel : @"Cancel")
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {
+                                                result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:(cancel != nil ? cancel : @"Cancel")];
                                                 [self.commandDelegate sendPluginResult:result callbackId:callbackId];
                                                 
                                             }];
-                [alert addAction:yesButton];
+                    [alert addAction:yesButton];
+                }
                 [[self currentApplicationViewController] presentViewController:alert animated:YES completion:nil];
             } else {
                 result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Alert Argument was null"];
