@@ -1,0 +1,4 @@
+.DS_Store
+Demo/uvialert/node_modules/*
+Demo/uvialert/platforms/*
+Demo/uvialert/plugins/*
