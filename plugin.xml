@@ -35,7 +35,7 @@
       </feature>
     </config-file>
 
-    <source-file src="src/android/NativeAlert.java" target-dir="src/org/apache/cordova/plugin/NativeAlert"/>
+    <source-file src="src/android/NativeAlert.java" target-dir="src/com/plugin/nativealert/"/>
   </platform>
 
 
