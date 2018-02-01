@@ -1,0 +1,33 @@
+{
+  "name": "com.plugin.alert",
+  "version": "0.5.0",
+  "description": "Simple Cordova plugin that helps to use native alert view and it will support both iOS and Android platforms.",
+  "cordova": {
+    "id": "com.plugin.alert",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vigneshuvi/cordova-plugin-alert.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "native-alert",
+    "UIAlertViewController"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "author": "Vignesh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vigneshuvi/cordova-plugin-alert/issues"
+  },
+  "homepage": "https://github.com/vigneshuvi/cordova-plugin-alert#readme"
+}

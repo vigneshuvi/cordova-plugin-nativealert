@@ -24,16 +24,18 @@
         CDVPluginResult* result = nil;
         int count = [[command arguments] count];
         if ( count > 0) {
-            NSDictionary* fields = [command.arguments objectAtIndex:0];
-            if ([[fields allKeys] count] > 0) {
-                NSString *title = [fields objectForKey:@"title"];
-                NSString *message = [fields objectForKey:@"message"];
-                NSString *ok = [fields objectForKey:@"success"];
-                UIAlertController * alert=[UIAlertController alertControllerWithTitle:title
-                                                                  message:message
+            NSString* jsonString = [command.arguments objectAtIndex:0];
+            NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+            id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            if ([[json allKeys] count] > 0) {
+                NSString *title = [json objectForKey:@"title"];
+                NSString *message = [json objectForKey:@"message"];
+                NSString *ok = [json objectForKey:@"success"];
+                UIAlertController * alert=[UIAlertController alertControllerWithTitle:(title != nil ? title : "Alert") 
+                                                                  message:(message != nil ? message : "")
                                                            preferredStyle:UIAlertControllerStyleAlert];
 
-                UIAlertAction* yesButton = [UIAlertAction actionWithTitle:ok
+                UIAlertAction* yesButton = [UIAlertAction actionWithTitle: (ok != nil ? ok : "Ok")
                                                                     style:UIAlertActionStyleDefault
                                                                   handler:^(UIAlertAction * action)
                 {
