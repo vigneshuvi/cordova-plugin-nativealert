@@ -10,6 +10,11 @@
 
 @implementation NativeAlert
 
+#define IS_IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
+
+#define kWindowFrame                        [[UIScreen mainScreen] bounds]
+#define kWindowWidth                        kWindowFrame.size.width
+#define kWindowHeight                       kWindowFrame.size.height
 /**
  * Plugin methods are executed on the UI thread.
  * If your plugin requires a non-trivial amount of processing or requires a blocking call,
@@ -53,6 +58,12 @@
                                                 
                                             }];
                     [alert addAction:yesButton];
+                }
+                if (IS_IPAD) {
+                    CGRect rect = CGRectMake( (kWindowWidth - 300) / 2,  100, 300, 400);
+                    alertController.popoverPresentationController.sourceView = alertController.view;
+                    alertController.popoverPresentationController.sourceRect = rect;
+                    alertController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
                 }
                 [[self currentApplicationViewController] presentViewController:alert animated:YES completion:nil];
             } else {
