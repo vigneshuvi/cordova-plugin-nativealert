@@ -30,18 +30,24 @@ var app = {
         this.receivedEvent('deviceready');
 
         var success = function(message) {
+            if (message == "Yes") {
+                // Write Logout code.
+            } else if (message == "No") {
+                // Write your code.
+            }
             console.log(message);
         }
         
         var failure = function() {
             console.log("Error calling alert Plugin");
         }
-        alertJson = {}
+
+        var alertJson = {}
         alertJson ["title"] = "Native Alert";
         alertJson ["message"] = "Are you sure want to logout?";
         alertJson ["okButton"] = "Yes";
         alertJson ["cancelButton"] = "No";
-        setTimeout(function(){ alert.showAlert(JSON.stringify(alertJson), success, failure); }, 3000);
+        setTimeout(function(){ nativealert.showAlert(JSON.stringify(alertJson), success, failure); }, 3000);
     },
 
     // Update DOM on a Received Event
