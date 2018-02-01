@@ -1,6 +1,6 @@
 {
   "name": "com.plugin.nativealert",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Simple Cordova plugin that helps to use native alert view and it will support both iOS and Android platforms.",
   "cordova": {
     "id": "com.plugin.nativealert",
