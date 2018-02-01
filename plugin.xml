@@ -3,7 +3,7 @@
         id="com.plugin.nativealert"
         version="0.5.2">
 
-  <name>Echo</name>
+  <name>NativeAlert</name>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
