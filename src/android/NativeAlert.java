@@ -13,10 +13,9 @@ import android.content.Context;
  * This class NativeAlert a string called from JavaScript.
  */
 public class NativeAlert extends CordovaPlugin {
-    private final Context context;
 
-    public NativeAlert(Context context) {
-        this.context = context;
+    public NativeAlert() {
+        // No args constructor
     }
 
     @Override
@@ -29,8 +28,8 @@ public class NativeAlert extends CordovaPlugin {
                 String message = (json.getString("message") != null) ? json.getString("message") : "";
                 String ok = (json.getString("okButton") != null) ? json.getString("okButton") : "Ok";
                 String cancel = json.getString("cancelButton");
-                cordova.getThreadPool().execute(new Runnable() {
-                    public void run() { // Thread-safe.
+                cordova.getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
                         show(title, message, ok, cancel, callbackContext);
                     }
                 });
@@ -42,7 +41,7 @@ public class NativeAlert extends CordovaPlugin {
     }
 
     private void show(String title, String message, String ok, String cancel, CallbackContext callbackContext) {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(cordova.getActivity().getWindow().getContext());
         alertDialog.setTitle(title);
         alertDialog.setMessage(message);
         alertDialog.setPositiveButton(ok,
