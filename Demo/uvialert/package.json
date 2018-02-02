@@ -12,6 +12,7 @@
     "dependencies": {
         "com.plugin.nativealert": "git+https://github.com/vigneshuvi/cordova-plugin-nativealert.git",
         "cordova-android": "^7.0.0",
+        "cordova-ios": "^4.5.4",
         "cordova-plugin-whitelist": "^1.3.3"
     },
     "cordova": {
@@ -20,7 +21,8 @@
             "cordova-plugin-whitelist": {}
         },
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ]
     }
 }
