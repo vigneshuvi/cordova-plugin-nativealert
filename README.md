@@ -1,6 +1,6 @@
-# Cordova Native Alert Plugin
+# Cordova Plugin - Native Alert/Dialog View
 
-Simple Cordova plugin that helps to use native alert view and it will support both iOS and Android platforms.
+Cordova plugin dialog and alert view: Helps to use native alert and dialog views and it will support both iOS and Android platforms.
 
 ## Features
 

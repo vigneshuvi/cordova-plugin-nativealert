@@ -1,11 +1,12 @@
 {
   "name": "com.plugin.nativealert",
-  "version": "0.6.1",
-  "description": "Simple Cordova plugin that helps to use native alert view and it will support both iOS and Android platforms.",
+  "version": "0.6.2",
+  "description": "Cordova plugin dialog and alert view: Helps to use native alert and dialog views and it will support both iOS and Android platforms.",
   "cordova": {
     "id": "com.plugin.nativealert",
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   },
   "repository": {
@@ -14,8 +15,14 @@
   },
   "keywords": [
     "ecosystem:cordova",
+    "cordova-plugin",
     "cordova-ios",
-    "native-alert",
+    "cordova-android",
+    "android-platform",
+    "android-dialog",
+    "android-dialog-view",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-alert",
     "UIAlertViewController"
   ],
   "engines": [
