@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         id="cordova.plugin.nativealert"
-        version="0.6.3">
+        version="0.6.4">
 
   <name>NativeAlert</name>
 
@@ -31,12 +31,12 @@
 
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="NativeAlert">
-        <param name="android-package" value="cordova.plugin.NativeAlert"/>
+        <param name="android-package" value="cordova.plugin.nativealert.NativeAlert"/>
         <param name="onload" value="true" />
       </feature>
     </config-file>
 
-    <source-file src="src/android/NativeAlert.java" target-dir="src/cordova/plugin"/>
+    <source-file src="src/android/NativeAlert.java" target-dir="src/cordova/plugin/nativealert"/>
   </platform>
 
 
