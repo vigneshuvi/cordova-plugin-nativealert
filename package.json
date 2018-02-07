@@ -1,9 +1,9 @@
 {
-  "name": "com.plugin.nativealert",
+  "name": "cordova.plugin.nativealert",
   "version": "0.6.2",
-  "description": "Cordova plugin dialog and alert view: Helps to use native alert and dialog views and it will support both iOS and Android platforms.",
+  "description": "Simple "Cordova Native Alert(Dialog) Plugin" is Helps to use native dialog views and it will support both iOS and Android platforms.",
   "cordova": {
-    "id": "com.plugin.nativealert",
+    "id": "cordova.plugin.nativealert",
     "platforms": [
       "ios",
       "android"
