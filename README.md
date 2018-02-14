@@ -20,9 +20,13 @@ Create a new Cordova Project
 		$ cordova create uvialert com.uviexample.uvialertapp NativeAlert
 		$ cd uvialert
 
-Install the plugin
+Install the plugin using GitHub URL
 
 		$ cordova plugin add  https://github.com/vigneshuvi/cordova-plugin-nativealert.git
+
+Install the plugin via NPM.
+
+		$ cordova plugin add cordova.plugin.nativealert
 
 Edit `www/js/index.js` and add the following code inside `onDeviceReady` and save the file.
 
